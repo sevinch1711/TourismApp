@@ -10,11 +10,12 @@ const MODELS = [
 ];
 
 function getApiKey(): string {
+  // Vite automatically injects variables starting with VITE_ into import.meta.env
   // @ts-ignore
-  const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY || process.env.OPENROUTER_API_KEY;
+  const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY;
   if (!apiKey) {
-    console.error("VITE_OPENROUTER_API_KEY not found in environment variables");
-    throw new Error("API Key is missing");
+    console.error("CRITICAL: VITE_OPENROUTER_API_KEY is missing from environment variables!");
+    throw new Error("API Key is missing. Check .env.local file.");
   }
   return apiKey;
 }
