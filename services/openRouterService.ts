@@ -5,6 +5,9 @@ import { TripPreferences } from "../types";
 const OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
 
 const MODELS = [
+  "google/gemini-2.0-flash-lite-preview-02-05:free", // Very fast and reliable free tier
+  "qwen/qwen-2.5-72b-instruct:free",                 // Usually has good availability
+  "nvidia/llama-3.1-nemotron-70b-instruct:free",     // Premium free model
   "nousresearch/hermes-3-llama-3.1-405b:free",
   "arcee-ai/trinity-large-preview:free",
   "openai/gpt-oss-120b:free",
