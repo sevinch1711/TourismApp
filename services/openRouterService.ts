@@ -38,8 +38,10 @@ async function callOpenRouter(
   const response = await fetch(OPENROUTER_URL, {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",
+      Authorization: `Bearer ${getApiKey()}`,
+      "HTTP-Referer": "https://tourismapp-blond.vercel.app", // Fallback URL, recommend user changes this if different
+      "X-Title": "Bukhara Travel Guide",
     },
     body: JSON.stringify({
       model,
