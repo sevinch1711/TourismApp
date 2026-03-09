@@ -10,9 +10,10 @@ const MODELS = [
 ];
 
 function getApiKey(): string {
-  const apiKey = process.env.OPENROUTER_API_KEY;
+  // @ts-ignore
+  const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY || process.env.OPENROUTER_API_KEY;
   if (!apiKey) {
-    console.error("OPENROUTER_API_KEY not found in environment variables");
+    console.error("VITE_OPENROUTER_API_KEY not found in environment variables");
     throw new Error("API Key is missing");
   }
   return apiKey;
