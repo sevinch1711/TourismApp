@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TripPreferences, Language } from '../types';
-import { generateTripPlan } from '../services/openRouterService';
+import { generateOfflinePlan } from '../services/offlinePlannerService';
 import { Calendar, Clock, DollarSign, Heart, User, Map, Loader2, Send, Sparkles } from 'lucide-react';
 import { UI_TEXT } from '../constants';
 
@@ -23,7 +23,7 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ lang }) => {
         setLoading(true);
         setItinerary(null);
         try {
-            const plan = await generateTripPlan(formData, lang);
+            const plan = await generateOfflinePlan(formData, lang);
             setItinerary(plan);
         } catch (error) {
             setItinerary("Error generating plan.");
@@ -116,8 +116,8 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ lang }) => {
                                             key={opt}
                                             onClick={() => setFormData({ ...formData, pace: opt === 'Fast' ? 'Fast-paced' : opt })}
                                             className={`py-3 text-sm font-medium rounded-xl transition-all ${formData.pace.includes(opt)
-                                                    ? 'bg-bukhara-primary text-white shadow-md'
-                                                    : 'bg-bukhara-bg text-gray-500 hover:bg-gray-200'
+                                                ? 'bg-bukhara-primary text-white shadow-md'
+                                                : 'bg-bukhara-bg text-gray-500 hover:bg-gray-200'
                                                 }`}
                                         >
                                             {opt}
