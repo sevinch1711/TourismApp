@@ -1,4 +1,5 @@
 import { SYSTEM_INSTRUCTION, PLANNER_INSTRUCTION } from "../constants";
+// Deployment trigger: OpenRouter integration refined
 import { TripPreferences } from "../types";
 
 const OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
